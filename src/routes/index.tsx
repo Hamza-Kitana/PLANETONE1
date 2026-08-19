@@ -51,24 +51,29 @@ function Home() {
   return (
     <>
       {/* ---------------- HERO ---------------- */}
-      <section ref={heroRef} className="relative min-h-[100svh] overflow-hidden grain">
-        <motion.img
-          src={hero}
-          alt=""
-          aria-hidden
-          width={1920}
-          height={1080}
-          className="absolute inset-0 h-full w-full object-cover opacity-60"
-          style={{ y: bgY, scale: bgScale }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/55 to-background" />
-        <div className="absolute inset-0">
-          <StarField />
+      <section ref={heroRef} className="relative min-h-[100svh] grain">
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.img
+            src={hero}
+            alt=""
+            aria-hidden
+            width={1920}
+            height={1080}
+            className="absolute inset-0 h-full w-full object-cover opacity-60"
+            style={{ y: bgY, scale: bgScale }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/55 to-background" />
+          <div className="absolute inset-0">
+            <StarField />
+          </div>
+          <div className="pointer-events-none absolute inset-0 scanlines opacity-20" />
         </div>
-        <div className="pointer-events-none absolute inset-0 scanlines opacity-20" />
 
-        <div className="relative grid min-h-[100svh] w-full items-start gap-8 px-4 pt-24 pb-16 sm:px-8 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:pt-28 lg:pb-20">
-          <motion.div style={{ y: titleY, opacity: fade }}>
+        <div className="relative z-10 grid min-h-[100svh] w-full items-start gap-8 px-5 pt-24 pb-16 sm:px-8 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:pt-28 lg:pb-20">
+          <motion.div
+            className="hero-copy min-w-0 w-full overflow-visible text-start"
+            style={{ y: titleY, opacity: fade }}
+          >
             <motion.p
               className="eyebrow"
               initial={{ opacity: 0, y: 20 }}
@@ -77,19 +82,19 @@ function Home() {
             >
               {t("hero.kicker")}
             </motion.p>
-            <h1 className="mt-4 text-[clamp(2.1rem,11vw,5.6rem)] leading-[0.95] sm:mt-5">
+            <h1 className="mt-4 text-[clamp(2rem,9.5vw,5.6rem)] leading-[1.08] sm:mt-5 sm:leading-[0.98]">
               <motion.span
                 className="block text-foreground"
-                initial={{ opacity: 0, y: 40, rotateX: 40 }}
-                animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 1, ease: [0.16, 1, 0.3, 1] }}
               >
                 {t("hero.title1")}
               </motion.span>
               <motion.span
-                className="block text-gradient-ember"
-                initial={{ opacity: 0, y: 40, rotateX: 40 }}
-                animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                className="hero-gradient-text block text-gradient-ember"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.45, duration: 1, ease: [0.16, 1, 0.3, 1] }}
               >
                 {t("hero.title2")}

@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Clapperboard, MapPin, Play } from "lucide-react";
 import { films, getFilm } from "@/data/films";
+import { getYoutubeEmbedUrl } from "@/lib/youtube";
 import type { Film } from "@/data/films";
 import { useI18n } from "@/lib/i18n";
 import { StarRating } from "@/components/StarRating";
@@ -157,12 +158,12 @@ function FilmPage() {
             style={{ boxShadow: "var(--shadow-cine)" }}
           >
             {playing && film.clipUrl ? (
-              <video
-                src={film.clipUrl}
-                className="h-full w-full object-cover"
-                controls
-                autoPlay
-                playsInline
+              <iframe
+                src={getYoutubeEmbedUrl(film.clipUrl, true)}
+                title={`${pick(film.title, film.titleAr)} trailer`}
+                className="h-full w-full border-0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
               />
             ) : (
               <>
@@ -183,7 +184,7 @@ function FilmPage() {
                   </button>
                 </div>
                 <p className="absolute inset-x-0 bottom-4 text-center text-[0.65rem] font-bold tracking-[0.28em] text-foreground/80 uppercase">
-                  {film.clipUrl ? t("film.watch") : t("film.clipsoon")}
+                  {t("film.watch")}
                 </p>
               </>
             )}

@@ -116,6 +116,28 @@
   html[dir="rtl"] h3 {
     font-family: "Cairo", var(--font-display);
     font-weight: 800;
+    letter-spacing: 0;
+  }
+
+  html[dir="rtl"] .eyebrow {
+    letter-spacing: 0.14em;
+  }
+
+  @media (min-width: 640px) {
+    html[dir="rtl"] .eyebrow {
+      letter-spacing: 0.2em;
+    }
+  }
+
+  html[dir="rtl"] .hero-copy {
+    padding-inline-start: 0.35rem;
+  }
+
+  html[dir="rtl"] .hero-gradient-text {
+    display: inline-block;
+    padding-inline: 0.08em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
   }
 
   ::selection {
