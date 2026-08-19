@@ -1,13 +1,19 @@
-/** Build a privacy-friendly YouTube embed URL from an ID or watch URL. */
+/** Build a YouTube embed URL from an ID or watch URL. */
 export function getYoutubeEmbedUrl(source: string, autoplay = false): string {
   const id = extractYoutubeId(source);
   if (!id) return source;
   const params = new URLSearchParams({
     rel: "0",
     modestbranding: "1",
+    playsinline: "1",
     ...(autoplay ? { autoplay: "1" } : {}),
   });
-  return `https://www.youtube-nocookie.com/embed/${id}?${params}`;
+  return `https://www.youtube.com/embed/${id}?${params}`;
+}
+
+export function getYoutubeWatchUrl(source: string): string | null {
+  const id = extractYoutubeId(source);
+  return id ? `https://www.youtube.com/watch?v=${id}` : null;
 }
 
 export function extractYoutubeId(source: string): string | null {

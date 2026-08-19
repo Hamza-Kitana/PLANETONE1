@@ -35,7 +35,7 @@ export function HeroOrbit() {
   const [centerIndex, setCenterIndex] = useState(2);
   const [paused, setPaused] = useState(false);
   const dirSign = dir === "rtl" ? -1 : 1;
-  const spread = isMobile ? 76 : 112;
+  const spread = isMobile ? 92 : 136;
 
   const tiltX = useMotionValue(0);
   const tiltY = useMotionValue(0);
@@ -80,11 +80,11 @@ export function HeroOrbit() {
       />
 
       <motion.div
-        className="relative min-h-[240px] sm:min-h-[340px] lg:min-h-[400px]"
+        className="relative min-h-[280px] sm:min-h-[390px] lg:min-h-[460px]"
         style={isMobile ? { perspective: 1200 } : { perspective: 1400, x: parallaxX, y: parallaxY }}
       >
         <div
-          className="relative mx-auto h-[220px] w-full max-w-[620px] sm:h-[320px] lg:h-[380px]"
+          className="relative mx-auto h-[260px] w-full max-w-[720px] sm:h-[360px] lg:h-[430px]"
           style={{ transformStyle: "preserve-3d" }}
         >
           <AnimatePresence initial={false}>
@@ -148,8 +148,8 @@ export function HeroOrbit() {
                       className={cn(
                         "overflow-hidden rounded-md border border-border transition-shadow duration-500 group-hover:border-primary/50",
                         isCenter
-                          ? "w-[108px] sm:w-[148px] lg:w-[168px]"
-                          : "w-[88px] sm:w-[118px] lg:w-[132px]",
+                          ? "w-[128px] sm:w-[176px] lg:w-[200px]"
+                          : "w-[104px] sm:w-[140px] lg:w-[158px]",
                       )}
                       style={{ boxShadow: isCenter ? "var(--shadow-cine)" : "var(--shadow-glow)" }}
                     >
@@ -175,7 +175,7 @@ export function HeroOrbit() {
         <AnimatePresence mode="wait" initial={false}>
           <motion.p
             key={centerFilm.slug}
-            className="pointer-events-none mx-auto mt-1 hidden max-w-[168px] truncate text-center text-[0.58rem] tracking-[0.14em] text-muted-foreground uppercase sm:block"
+            className="pointer-events-none mx-auto mt-2 hidden max-w-[200px] truncate text-center text-[0.62rem] tracking-[0.14em] text-muted-foreground uppercase sm:block"
             initial={{ opacity: 0, y: 8, rotateX: 24 }}
             animate={{ opacity: 1, y: 0, rotateX: 0 }}
             exit={{ opacity: 0, y: -8, rotateX: -18 }}

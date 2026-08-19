@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "motion/react";
 import { useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, Clapperboard, MapPin, Play } from "lucide-react";
 import { films, getFilm } from "@/data/films";
-import { getYoutubeEmbedUrl } from "@/lib/youtube";
+import { getYoutubeEmbedUrl, getYoutubeWatchUrl } from "@/lib/youtube";
 import type { Film } from "@/data/films";
 import { useI18n } from "@/lib/i18n";
 import { StarRating } from "@/components/StarRating";
@@ -164,6 +164,7 @@ function FilmPage() {
                 className="h-full w-full border-0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
+                referrerPolicy="strict-origin-when-cross-origin"
               />
             ) : (
               <>
@@ -190,6 +191,18 @@ function FilmPage() {
             )}
             <div className="pointer-events-none absolute inset-0 scanlines opacity-20" />
           </div>
+          {playing && film.clipUrl && getYoutubeWatchUrl(film.clipUrl) ? (
+            <p className="mt-3 text-center">
+              <a
+                href={getYoutubeWatchUrl(film.clipUrl)!}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[0.65rem] tracking-[0.18em] text-muted-foreground uppercase underline-offset-4 transition-colors hover:text-foreground hover:underline"
+              >
+                YouTube ↗
+              </a>
+            </p>
+          ) : null}
         </Reveal>
       </section>
 
