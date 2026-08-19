@@ -8,7 +8,7 @@ import {
   type ReactNode,
 } from "react";
 
-export type Lang = "en" | "ar";
+export type Lang = "en" | "ar" | "es";
 
 type Dict = Record<string, { en: string; ar: string }>;
 
@@ -96,12 +96,21 @@ export const dict: Dict = {
   "film.clipsoon": { en: "Clip coming soon", ar: "المقطع قريباً" },
   "film.next": { en: "Next film", ar: "الفيلم التالي" },
   "film.gallery": { en: "Stills", ar: "صور من الفيلم" },
+  "film.producer": { en: "Producer", ar: "المنتج" },
+  "film.music": { en: "Music", ar: "الموسيقى" },
+  "film.location": { en: "Location", ar: "الموقع" },
+  "film.themes": { en: "Themes", ar: "الموضوعات" },
+  "film.production": { en: "Behind the lens", ar: "خلف الكاميرا" },
+  "film.festivals": { en: "Festival journey", ar: "رحلة المهرجانات" },
+  "film.category.documentary": { en: "Documentary", ar: "وثائقي" },
+  "film.category.short": { en: "Short", ar: "قصير" },
+  "film.category.series": { en: "Series", ar: "مسلسل" },
 
   "about.eyebrow": { en: "About us", ar: "من نحن" },
   "about.title": { en: "We film what refuses to be forgotten", ar: "نصوّر ما يرفض أن يُنسى" },
   "about.lead": {
-    en: "Planet One is an independent documentary house based in Amman. We follow real lives across seasons — not for a headline, but for a film that stays.",
-    ar: "بلانت ون شركة إنتاج وثائقي مستقلة مقرّها عمّان. نلاحق حيوات حقيقية عبر الفصول — لا من أجل عنوان، بل من أجل فيلم يبقى.",
+    en: "Planet One is an independent documentary house based in Punchbowl, NSW, Australia. We follow real lives across seasons — not for a headline, but for a film that stays.",
+    ar: "بلانت ون شركة إنتاج وثائقي مستقلة مقرّها بانشبول، نيو ساوث ويلز، أستراليا. نلاحق حيوات حقيقية عبر الفصول — لا من أجل عنوان، بل من أجل فيلم يبقى.",
   },
   "about.p1": {
     en: "We build films around people, not press cycles. That means months of research before a camera opens, small crews that can sit in a kitchen without changing the air, and an edit that protects silence as much as speech.",
@@ -217,13 +226,121 @@ export const dict: Dict = {
   "cta.btn": { en: "Start a project", ar: "ابدأ مشروعاً" },
 };
 
+const esDict: Partial<Record<keyof typeof dict, string>> = {
+  "nav.home": "Inicio",
+  "nav.films": "Peliculas",
+  "nav.about": "Sobre nosotros",
+  "nav.contact": "Contacto",
+  "nav.brand": "Planet One",
+  "nav.tagline": "Produccion cinematografica",
+  "loader.line1": "Preparando el carrete",
+  "loader.line2": "Encendiendo el proyector",
+  "loader.line3": "Planet One presenta",
+  "hero.kicker": "Produccion de cine documental",
+  "hero.title1": "Un planeta.",
+  "hero.title2": "Historias infinitas.",
+  "hero.sub":
+    "Perseguimos lo real - polvo, sal, sudor y silencio - y lo convertimos en cine que se queda contigo mucho despues de los creditos.",
+  "hero.cta": "Explora nuestras peliculas",
+  "hero.cta2": "Trabaja con nosotros",
+  "hero.scroll": "Desplazar",
+  "stats.films": "Peliculas producidas",
+  "stats.awards": "Selecciones en festivales",
+  "stats.countries": "Paises filmados",
+  "stats.years": "Anos detras de la camara",
+  "work.eyebrow": "Obras seleccionadas",
+  "work.title": "El Catalogo",
+  "work.sub": "Cada plano es un lugar en el que estuvimos. Abre una pelicula para entrar en ella.",
+  "work.all": "Ver todas las peliculas",
+  "work.open": "Abrir pelicula",
+  "process.eyebrow": "Como trabajamos",
+  "process.title": "Del susurro a la pantalla",
+  "process.1.t": "Investigacion",
+  "process.1.d": "Meses en campo antes de que una camara abra su ojo.",
+  "process.2.t": "Rodaje",
+  "process.2.d": "Equipos pequenos, luz natural y paciencia medida en estaciones.",
+  "process.3.t": "Edicion y sonido",
+  "process.3.d": "Ritmo, silencio y musica construidos plano a plano.",
+  "process.4.t": "Estreno",
+  "process.4.d": "Festivales, cadenas y streaming en toda la region.",
+  "films.eyebrow": "Filmografia",
+  "films.title": "Nuestras peliculas",
+  "films.sub": "Documentales, cortos y retratos de formato largo producidos por Planet One.",
+  "films.filter.all": "Todo",
+  "film.back": "Todas las peliculas",
+  "film.synopsis": "Sinopsis",
+  "film.credits": "Creditos",
+  "film.director": "Director",
+  "film.dop": "Fotografia",
+  "film.editor": "Editor",
+  "film.sound": "Sonido",
+  "film.runtime": "Duracion",
+  "film.year": "Ano",
+  "film.lang": "Idioma",
+  "film.rating": "Calificacion",
+  "film.awards": "Premios y festivales",
+  "film.watch": "Reproducir clip",
+  "film.clipsoon": "Clip disponible pronto",
+  "film.next": "Siguiente pelicula",
+  "film.gallery": "Fotogramas",
+  "film.producer": "Productor",
+  "film.music": "Musica",
+  "film.location": "Ubicacion",
+  "film.themes": "Temas",
+  "film.production": "Detras de la camara",
+  "film.festivals": "Recorrido en festivales",
+  "film.category.documentary": "Documental",
+  "film.category.short": "Corto",
+  "film.category.series": "Serie",
+  "about.eyebrow": "Sobre nosotros",
+  "about.title": "Filmamos lo que se niega a ser olvidado",
+  "about.lead":
+    "Planet One es una casa documental independiente con sede en Punchbowl, NSW, Australia. Seguimos vidas reales a traves de las estaciones, no por un titular, sino por una pelicula que permanece.",
+  "about.field": "En locacion",
+  "about.story": "Como empezo la casa",
+  "about.values": "Nuestros principios",
+  "about.values.sub": "Tres reglas que no negociamos cuando hay una camara en la sala.",
+  "about.v1.t": "La verdad primero",
+  "about.v2.t": "Oficio cinematografico",
+  "about.v3.t": "Raices locales",
+  "about.team": "El equipo",
+  "about.team.sub": "Una unidad pequena. Quien rueda tambien se sienta en el montaje.",
+  "about.services": "Que hacemos",
+  "about.services.sub": "Produccion integral, o una sola especialidad si la historia lo necesita.",
+  "about.s1": "Produccion documental",
+  "about.s2": "Peliculas de marca",
+  "about.s3": "Aereo y dron",
+  "about.s4": "Postproduccion",
+  "about.s5": "Diseno sonoro y musica",
+  "about.s6": "Logistica de campo",
+  "contact.eyebrow": "Contacto",
+  "contact.title": "Hagamos algo real",
+  "contact.sub": "Cuentanos la historia. Respondemos en dos dias habiles.",
+  "contact.name": "Tu nombre",
+  "contact.email": "Correo electronico",
+  "contact.subject": "Tipo de proyecto",
+  "contact.message": "Cuentanos la historia",
+  "contact.send": "Enviar mensaje",
+  "contact.sent": "Mensaje enviado. Hablamos pronto.",
+  "contact.studio": "Estudio",
+  "contact.phone": "Telefono",
+  "contact.hours": "Horario",
+  "contact.hoursv": "Dom-Jue - 9:00 - 18:00",
+  "footer.explore": "Explorar",
+  "footer.rights": "Todos los derechos reservados.",
+  "footer.blurb": "Produccion documental independiente: un planeta, historias infinitas.",
+  "cta.title": "Tienes una historia que merece una pelicula?",
+  "cta.sub": "Desarrollamos, rodamos y entregamos de principio a fin.",
+  "cta.btn": "Iniciar proyecto",
+};
+
 type I18nValue = {
   lang: Lang;
   dir: "ltr" | "rtl";
   setLang: (l: Lang) => void;
   toggle: () => void;
   t: (key: keyof typeof dict | string) => string;
-  pick: (en: string, ar: string) => string;
+  pick: (en: string, ar: string, es?: string) => string;
 };
 
 const I18nContext = createContext<I18nValue | null>(null);
@@ -233,7 +350,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const stored = window.localStorage.getItem("p1-lang") as Lang | null;
-    if (stored === "ar" || stored === "en") setLangState(stored);
+    if (stored === "ar" || stored === "en" || stored === "es") setLangState(stored);
   }, []);
 
   useEffect(() => {
@@ -251,9 +368,15 @@ export function I18nProvider({ children }: { children: ReactNode }) {
       lang,
       dir: lang === "ar" ? "rtl" : "ltr",
       setLang,
-      toggle: () => setLang(lang === "en" ? "ar" : "en"),
-      t: (key) => dict[key as string]?.[lang] ?? (key as string),
-      pick: (en, ar) => (lang === "ar" ? ar : en),
+      toggle: () => setLang(lang === "en" ? "ar" : lang === "ar" ? "es" : "en"),
+      t: (key) => {
+        const k = key as keyof typeof dict;
+        const item = dict[k];
+        if (!item) return key as string;
+        if (lang === "es") return esDict[k] ?? item.en;
+        return item[lang];
+      },
+      pick: (en, ar, es) => (lang === "ar" ? ar : lang === "es" ? (es ?? en) : en),
     }),
     [lang, setLang],
   );

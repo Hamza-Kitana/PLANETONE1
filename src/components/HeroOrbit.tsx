@@ -71,10 +71,7 @@ export function HeroOrbit() {
       </div>
 
       <motion.div className="preserve-3d absolute inset-0" style={{ rotateX: rotX, rotateZ: rotZ }}>
-        <div
-          data-orbit
-          className="preserve-3d absolute left-1/2 top-1/2 animate-orbit-y"
-        >
+        <div data-orbit className="preserve-3d absolute left-1/2 top-1/2 animate-orbit-y">
           {films.map((film, i) => {
             const a = i * step;
             return (

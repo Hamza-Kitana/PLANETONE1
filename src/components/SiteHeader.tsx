@@ -13,9 +13,11 @@ const links = [
 ] as const;
 
 export function SiteHeader() {
-  const { t, lang, toggle } = useI18n();
+  const { t, lang, setLang } = useI18n();
   const [open, setOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const langLabel = lang === "en" ? "EN" : lang === "ar" ? "AR" : "ES";
 
   useEffect(() => {
     let last = window.scrollY > 8;
@@ -29,6 +31,13 @@ export function SiteHeader() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    const onWindowClick = () => setLangOpen(false);
+    if (!langOpen) return;
+    window.addEventListener("click", onWindowClick);
+    return () => window.removeEventListener("click", onWindowClick);
+  }, [langOpen]);
 
   const solid = scrolled || open;
 
@@ -51,7 +60,7 @@ export function SiteHeader() {
           </motion.div>
           <span className="min-w-0 leading-none">
             <span className="block truncate font-display text-sm tracking-[0.14em] text-foreground sm:text-lg sm:tracking-[0.18em]">
-              {lang === "ar" ? "بلانت ون" : "PLANET ONE"}
+              {t("nav.brand")}
             </span>
             <span className="hidden text-[0.6rem] tracking-[0.34em] text-primary sm:block">
               {t("nav.tagline")}
@@ -74,14 +83,54 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <button
-            onClick={toggle}
-            className="flex min-h-10 items-center gap-1.5 rounded-full border border-border px-3 py-2 text-[0.65rem] font-bold tracking-[0.16em] text-foreground transition-all hover:border-accent hover:text-accent sm:gap-2 sm:px-4 sm:tracking-[0.2em]"
-            aria-label="Switch language"
-          >
-            <Languages size={14} />
-            {lang === "en" ? "AR" : "EN"}
-          </button>
+          <div className="relative">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setLangOpen((v) => !v);
+              }}
+              className="flex min-h-10 items-center gap-1.5 rounded-full border border-border px-3 py-2 text-[0.65rem] font-bold tracking-[0.16em] text-foreground transition-all hover:border-accent hover:text-accent sm:gap-2 sm:px-4 sm:tracking-[0.2em]"
+              aria-label="Choose language"
+              aria-expanded={langOpen}
+            >
+              <Languages size={14} />
+              {langLabel}
+            </button>
+            <AnimatePresence>
+              {langOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute end-0 z-50 mt-2 w-40 overflow-hidden rounded-lg border border-border bg-background/95 p-1.5 backdrop-blur-xl"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {[
+                    { value: "en", label: "English" },
+                    { value: "ar", label: "العربية" },
+                    { value: "es", label: "Espanol" },
+                  ].map((item) => (
+                    <button
+                      key={item.value}
+                      onClick={() => {
+                        setLang(item.value as "en" | "ar" | "es");
+                        setLangOpen(false);
+                      }}
+                      className={`flex w-full items-center justify-between rounded-md px-3 py-2 text-sm transition-colors ${
+                        lang === item.value
+                          ? "bg-accent/15 text-accent"
+                          : "text-foreground hover:bg-card hover:text-foreground"
+                      }`}
+                    >
+                      <span>{item.label}</span>
+                      {lang === item.value ? <span className="text-xs">✓</span> : null}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
           <button
             className="md:hidden min-h-10 min-w-10 rounded-full border border-border p-2.5 text-foreground"
             onClick={() => setOpen((o) => !o)}

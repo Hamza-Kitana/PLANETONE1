@@ -28,10 +28,10 @@ export const Route = createFileRoute("/films/")({
 });
 
 const categories = [
-  { id: "all", en: "All", ar: "الكل" },
-  { id: "documentary", en: "Documentary", ar: "وثائقي" },
-  { id: "short", en: "Short", ar: "قصير" },
-  { id: "series", en: "Series", ar: "مسلسل" },
+  { id: "all", en: "All", ar: "الكل", es: "Todo" },
+  { id: "documentary", en: "Documentary", ar: "وثائقي", es: "Documental" },
+  { id: "short", en: "Short", ar: "قصير", es: "Corto" },
+  { id: "series", en: "Series", ar: "مسلسل", es: "Serie" },
 ] as const;
 
 function FilmsPage() {
@@ -74,7 +74,7 @@ function FilmsPage() {
                     : "border-border text-muted-foreground hover:text-foreground"
                 }`}
               >
-                {pick(c.en, c.ar)}
+                {pick(c.en, c.ar, c.es)}
                 {cat === c.id && (
                   <motion.span
                     layoutId="cat-pill"

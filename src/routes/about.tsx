@@ -13,7 +13,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Planet One is an independent documentary production house in Amman: research, shooting, edit, sound design and delivery under one roof.",
+          "Planet One is an independent documentary production house in Punchbowl, NSW, Australia: research, shooting, edit, sound design and delivery under one roof.",
       },
       { property: "og:title", content: "About Planet One" },
       {
@@ -31,7 +31,8 @@ const team = [
     ar: "حمزة الدبعور",
     roleEn: "Founder / Director",
     roleAr: "المؤسس / مخرج",
-    bioEn: "Started the house. Directs long-form work and stays with a story until the cut is honest.",
+    bioEn:
+      "Started the house. Directs long-form work and stays with a story until the cut is honest.",
     bioAr: "أسّس الشركة. يخرج الأعمال الطويلة ويبقى مع الحكاية حتى يصير القصّ صادقاً.",
   },
   {
@@ -47,7 +48,8 @@ const team = [
     ar: "لينا صباغ",
     roleEn: "Cinematographer",
     roleAr: "مديرة تصوير",
-    bioEn: "Lights rooms as they are. Prefers available light and a lens that does not announce itself.",
+    bioEn:
+      "Lights rooms as they are. Prefers available light and a lens that does not announce itself.",
     bioAr: "تضيء الغرف كما هي. تفضّل الضوء الموجود وعدسة لا تعلن عن نفسها.",
   },
   {
@@ -208,7 +210,9 @@ function AboutPage() {
                   className="pointer-events-none absolute -right-10 -top-10 h-28 w-28 rounded-full opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-50"
                   style={{ background: "var(--gradient-ember)" }}
                 />
-                <p className="font-display text-xl text-foreground sm:text-2xl">{pick(m.en, m.ar)}</p>
+                <p className="font-display text-xl text-foreground sm:text-2xl">
+                  {pick(m.en, m.ar)}
+                </p>
                 <p className="mt-1.5 text-xs tracking-[0.18em] text-primary uppercase">
                   {pick(m.roleEn, m.roleAr)}
                 </p>

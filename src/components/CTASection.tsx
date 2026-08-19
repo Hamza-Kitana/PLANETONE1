@@ -16,7 +16,9 @@ export function CTASection({ compact = false }: { compact?: boolean }) {
       />
       <Reveal className="relative w-full px-4 text-center sm:px-8">
         <p className="eyebrow">{t("cta.sub")}</p>
-        <h2 className={`mt-3 leading-[1.15] ${compact ? "text-2xl sm:text-3xl" : "text-3xl sm:text-6xl"}`}>
+        <h2
+          className={`mt-3 leading-[1.15] ${compact ? "text-2xl sm:text-3xl" : "text-3xl sm:text-6xl"}`}
+        >
           <span className="text-gradient-ember">{t("cta.title")}</span>
         </h2>
         <Link
@@ -25,7 +27,10 @@ export function CTASection({ compact = false }: { compact?: boolean }) {
           style={{ background: "var(--gradient-ember)", boxShadow: "var(--shadow-ember)" }}
         >
           {t("cta.btn")}
-          <ArrowRight size={16} className="transition-transform group-hover:translate-x-1 rtl:rotate-180" />
+          <ArrowRight
+            size={16}
+            className="transition-transform group-hover:translate-x-1 rtl:rotate-180"
+          />
         </Link>
       </Reveal>
     </section>

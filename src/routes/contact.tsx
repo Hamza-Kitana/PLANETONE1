@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { Clock, Mail, MapPin, Phone, Send } from "lucide-react";
 import { toast } from "sonner";
+import { contact } from "@/lib/contact";
 import { useI18n } from "@/lib/i18n";
 import { Reveal, RevealText } from "@/components/Reveal";
 import { StarField } from "@/components/StarField";
@@ -113,9 +114,13 @@ function ContactPage() {
           <Reveal delay={0.15}>
             <div className="space-y-5">
               {[
-                { icon: MapPin, k: t("contact.studio"), v: pick("Amman, Jordan", "عمّان، الأردن") },
-                { icon: Mail, k: "Email", v: "hello@planetone.film" },
-                { icon: Phone, k: t("contact.phone"), v: "+962 7 9000 0000" },
+                {
+                  icon: MapPin,
+                  k: t("contact.studio"),
+                  v: pick(contact.location.en, contact.location.ar, contact.location.es),
+                },
+                { icon: Mail, k: t("contact.email"), v: contact.email },
+                { icon: Phone, k: t("contact.phone"), v: contact.phone },
                 { icon: Clock, k: t("contact.hours"), v: t("contact.hoursv") },
               ].map((c) => (
                 <div
@@ -139,7 +144,7 @@ function ContactPage() {
               <div className="overflow-hidden rounded-lg border border-border">
                 <iframe
                   title="Planet One studio location"
-                  src="https://www.openstreetmap.org/export/embed.html?bbox=35.85%2C31.93%2C35.99%2C32.00&layer=mapnik"
+                  src={contact.mapEmbed}
                   className="h-48 w-full grayscale-[40%] invert-[0.9] hue-rotate-180 sm:h-64"
                   loading="lazy"
                 />

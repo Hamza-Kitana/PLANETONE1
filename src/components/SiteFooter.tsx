@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Youtube, Mail, MapPin, Phone } from "lucide-react";
+import { contact } from "@/lib/contact";
 import { useI18n } from "@/lib/i18n";
 import { PlanetOneLogo } from "@/components/PlanetOneLogo";
 
@@ -27,16 +28,14 @@ export function SiteFooter() {
         <div className="max-w-sm sm:col-span-2 lg:col-span-1">
           <div className="flex items-center gap-3">
             <PlanetOneLogo className="h-16 w-16 object-contain" />
-            <span className="font-display text-xl tracking-[0.18em]">
-              {lang === "ar" ? "بلانت ون" : "PLANET ONE"}
-            </span>
+            <span className="font-display text-xl tracking-[0.18em]">{t("nav.brand")}</span>
           </div>
           <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{t("footer.blurb")}</p>
           <div className="mt-6 flex gap-3">
             {[Instagram, Youtube, Mail].map((Icon, i) => (
               <a
                 key={i}
-                href="#"
+                href={Icon === Mail ? `mailto:${contact.email}` : "#"}
                 className="grid h-10 w-10 place-items-center rounded-full border border-border text-muted-foreground transition-all hover:border-accent hover:text-accent"
                 aria-label="Planet One social link"
               >
@@ -62,15 +61,26 @@ export function SiteFooter() {
           <div className="mt-4 space-y-3 text-sm text-muted-foreground">
             <p className="flex items-start gap-2">
               <MapPin size={15} className="mt-0.5 shrink-0 text-primary" />
-              {lang === "ar" ? "عمّان، الأردن" : "Amman, Jordan"}
+              {lang === "ar"
+                ? contact.location.ar
+                : lang === "es"
+                  ? contact.location.es
+                  : contact.location.en}
             </p>
             <p className="flex items-center gap-2">
               <Mail size={15} className="shrink-0 text-primary" />
-              hello@planetone.film
+              <a
+                href={`mailto:${contact.email}`}
+                className="transition-colors hover:text-foreground"
+              >
+                {contact.email}
+              </a>
             </p>
             <p className="flex items-center gap-2" dir="ltr">
               <Phone size={15} className="shrink-0 text-primary" />
-              +962 7 9000 0000
+              <a href={contact.phoneHref} className="transition-colors hover:text-foreground">
+                {contact.phone}
+              </a>
             </p>
           </div>
         </div>
@@ -80,7 +90,9 @@ export function SiteFooter() {
         <span>
           © {new Date().getFullYear()} Planet One — {t("footer.rights")}
         </span>
-        <span>hello@planetone.film</span>
+        <a href={`mailto:${contact.email}`} className="transition-colors hover:text-foreground">
+          {contact.email}
+        </a>
       </div>
     </footer>
   );

@@ -122,7 +122,10 @@ function Home() {
                 className="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-border px-7 py-3.5 text-[0.68rem] font-bold tracking-[0.18em] uppercase text-foreground transition-colors hover:border-primary hover:text-primary sm:w-auto sm:py-4 sm:tracking-[0.22em]"
               >
                 {t("hero.cta2")}
-                <ArrowRight size={14} className="transition-transform group-hover:translate-x-1 rtl:rotate-180" />
+                <ArrowRight
+                  size={14}
+                  className="transition-transform group-hover:translate-x-1 rtl:rotate-180"
+                />
               </Link>
             </motion.div>
           </motion.div>
@@ -153,7 +156,7 @@ function Home() {
 
       {/* ---------------- MARQUEE ---------------- */}
       <section className="relative overflow-hidden border-y border-border/60 py-7 sm:py-9">
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" dir="ltr">
           <motion.div
             className="flex h-full w-max"
             animate={{ x: ["0%", "-50%"] }}
@@ -174,7 +177,7 @@ function Home() {
           <div className="pointer-events-none absolute inset-0 scanlines opacity-15" />
         </div>
 
-        <div className="relative z-10 flex overflow-hidden">
+        <div className="relative z-10 flex overflow-hidden" dir="ltr">
           <motion.div
             className="flex shrink-0 gap-8 pe-8 sm:gap-10 sm:pe-10"
             animate={{ x: ["0%", "-50%"] }}
@@ -194,9 +197,9 @@ function Home() {
       </section>
 
       {/* ---------------- FILMS ---------------- */}
-      <section className="screen-panel relative w-full">
-        <div className="flex w-full flex-col gap-4 px-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between sm:gap-6 sm:px-8">
-          <div>
+      <section className="relative w-full py-16 sm:py-20 lg:py-24">
+        <div className="flex w-full flex-col gap-5 px-4 sm:flex-row sm:items-end sm:justify-between sm:gap-6 sm:px-8">
+          <div className="max-w-2xl text-start">
             <p className="eyebrow">{t("work.eyebrow")}</p>
             <h2 className="mt-3 text-3xl sm:text-6xl">
               <RevealText text={t("work.title")} className="text-foreground" />
@@ -205,10 +208,13 @@ function Home() {
           </div>
           <Link
             to="/films"
-            className="group inline-flex items-center gap-2 text-xs font-bold tracking-[0.22em] text-accent uppercase"
+            className="group inline-flex shrink-0 items-center gap-2 self-start text-xs font-bold tracking-[0.22em] text-accent uppercase sm:self-auto"
           >
             {t("work.all")}
-            <ArrowRight size={14} className="transition-transform group-hover:translate-x-1 rtl:rotate-180" />
+            <ArrowRight
+              size={14}
+              className="transition-transform group-hover:translate-x-1 rtl:rotate-180"
+            />
           </Link>
         </div>
 
@@ -223,9 +229,7 @@ function Home() {
         <div className="w-full px-4 sm:px-8">
           <Reveal>
             <p className="eyebrow">{t("process.eyebrow")}</p>
-            <h2 className="mt-3 text-3xl sm:text-5xl text-foreground">
-              {t("process.title")}
-            </h2>
+            <h2 className="mt-3 text-3xl sm:text-5xl text-foreground">{t("process.title")}</h2>
           </Reveal>
 
           <div className="mt-10 grid gap-px overflow-hidden rounded-lg border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
@@ -304,7 +308,10 @@ function AboutCta() {
             className="group mt-6 inline-flex items-center gap-2 border-b border-accent pb-1 text-xs font-bold tracking-[0.22em] text-accent uppercase"
           >
             {t("nav.about")}
-            <ArrowRight size={14} className="transition-transform group-hover:translate-x-1 rtl:rotate-180" />
+            <ArrowRight
+              size={14}
+              className="transition-transform group-hover:translate-x-1 rtl:rotate-180"
+            />
           </Link>
         </Reveal>
 
@@ -320,7 +327,10 @@ function AboutCta() {
               style={{ background: "var(--gradient-ember)", boxShadow: "var(--shadow-ember)" }}
             >
               {t("cta.btn")}
-              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1 rtl:rotate-180" />
+              <ArrowRight
+                size={16}
+                className="transition-transform group-hover:translate-x-1 rtl:rotate-180"
+              />
             </Link>
           </div>
         </Reveal>

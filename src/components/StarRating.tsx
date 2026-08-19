@@ -28,9 +28,7 @@ export function StarRating({
         })}
       </span>
       {showValue && (
-        <span className="text-xs font-semibold tracking-widest text-gold">
-          {value.toFixed(1)}
-        </span>
+        <span className="text-xs font-semibold tracking-widest text-gold">{value.toFixed(1)}</span>
       )}
     </span>
   );

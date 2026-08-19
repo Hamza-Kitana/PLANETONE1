@@ -80,7 +80,7 @@ export function CinemaLoader() {
             <div className="space-y-2">
               <p className="eyebrow">{lines[3 - count] ?? lines[2]}</p>
               <p className="font-display text-3xl tracking-[0.2em] text-foreground">
-                {lang === "ar" ? "بلانت ون" : "PLANET ONE"}
+                {t("nav.brand")}
               </p>
             </div>
 
